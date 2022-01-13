@@ -8,13 +8,12 @@ int* reallocateMemory(int* arr, int capacity);
 int main() {
 	int count = 0, capacity = 5;
 	int* arr = new int[capacity];
+	int value = 0;
 	
 	bool isFinished = false;
 
-	while (!isFinished) {
+	while (true) {
 		cout << "Input your positive number(0: Exit): ";
-
-		int value = 0;
 		cin >> value;
 
 		if (value == 0) {
