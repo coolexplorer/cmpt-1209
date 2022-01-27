@@ -12,12 +12,12 @@ int main() {
     double g = 2.5F;
     double h = 'A' + 2.5;
 
-    cout << typeid(a).name() << endl;
-    cout << typeid(b).name() << endl;
-    cout << typeid(c).name() << endl;
-    cout << typeid(d).name() << endl;
-    cout << typeid(e).name() << endl;
-    cout << typeid(f).name() << endl;
-    cout << typeid(g).name() << endl;
-    cout << typeid(h).name() << endl;
+    cout << a << endl;
+    cout << b << endl;
+    cout << c << endl;
+    cout << d << endl;
+    cout << e << endl;
+    cout << f << endl;
+    cout << g << endl;
+    cout << h << endl;
 }
