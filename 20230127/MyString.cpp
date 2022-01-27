@@ -1,11 +1,15 @@
 #include <cstring>
 #include "MyString.h"
 
+
+int MyString::count = 0;
+
 MyString::MyString() {
     capacity = 11;
     s = new char[capacity];
     s[0] = '\0';
     size = 0;
+    count++;
 }
 
 MyString::MyString(const char s[]) {
@@ -18,6 +22,7 @@ MyString::MyString(const char s[]) {
         this->s[i] = s[i];
     }
     this->s[i] = '\0';
+    count++;
 }
 
 MyString::MyString(const MyString& obj2) {
@@ -30,14 +35,23 @@ MyString::MyString(const MyString& obj2) {
         s[i] = obj2.s[i];
     }
     s[capacity] = '\0';
+    count++;
 }
 
 MyString::~MyString() {
     delete[] s;
+
+    if (count > 0) {
+        count--;
+    }
 }
 
 int MyString::getSize() const {
     return size;
+}
+
+int MyString::getCount() {
+    return count;
 }
 
 void MyString::concat(const char s2[]) {
