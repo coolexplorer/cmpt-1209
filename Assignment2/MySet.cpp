@@ -20,7 +20,7 @@ MySet::MySet(const int sequence[], int size) {
 
     for (int i = 0 ; i < size ; i++) {
         if (!has(sequence[i])) {
-            set[i] = sequence[i];
+            set[this->size] = sequence[i];
             this->size++;
         }
     }
@@ -107,7 +107,6 @@ bool MySet::has(int item) const {
 
 MySet MySet::unionWith(const MySet& anotherSet) const {
     MySet newSet = MySet(set, size);
-    newSet.print();
     
     for (int i = 0 ; i < anotherSet.size ; i++) {
         if (!newSet.has(anotherSet.set[i])) {
