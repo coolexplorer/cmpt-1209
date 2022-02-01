@@ -75,20 +75,18 @@ bool MySet::add(const int sequence[], int size) {
 }
 
 bool MySet::remove(int item) {
-    int* temp = new int[bufferSize];
-    int newSize = 0;
+    int index = 0;
 
     if (has(item)) {
         for (int i = 0 ; i < size ; i++) {
-            if (set[i] != item) {
-                temp[newSize] = set[i];
-                newSize++;
+            if (set[i] == item) {
+                index = i;
+                break;
             }
         }
-        size = newSize;
-
-        delete[] set;
-        set = temp;
+        
+        set[index] = set[size - 1];
+        size--;
 
         return true;
     } else {
