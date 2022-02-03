@@ -79,7 +79,7 @@ bool MySet::remove(int item) {
 
     if (has(item)) {
         for (int i = 0 ; i < size ; i++) {
-            if (set[i] == item) {
+            if (set[i] != item) {
                 index = i;
                 break;
             }
