@@ -21,21 +21,30 @@ public:
 private:
     T queue[capacity];
     int size;
-    int indexOfHighPriority;
+    int indexOfHighPriority;        // This attribute will store the High Priority index. If the high priority is not searched, the value will be -1.
 
     void findTheHighPriority();
 };
 
+// Complexity
+// - Best case : O(1)
+// - Worst case : O(1)
 template<typename T, int capacity>
 PriorityQueue<T, capacity>::PriorityQueue() {
     indexOfHighPriority = -1;
     size = 0;
 
+    // Size should be 0 and indexOfHighPriority should be -1. 
     assert(size == 0);
+    assert(indexOfHighPriority == -1);
 }
 
+// Complexity
+// - Best case : O(n)
+// - Worst case : O(n)
 template<typename T, int capacity>
 PriorityQueue<T, capacity>::PriorityQueue(T queue[], int size) throw (runtime_error) {
+    // Capacity should be greater than and eaqul to size. 
     assert(capacity >= size);
 
     if (capacity < size) {
@@ -49,9 +58,17 @@ PriorityQueue<T, capacity>::PriorityQueue(T queue[], int size) throw (runtime_er
     }
     this->size = size;
 
+    // size of the queue object should be same with the size of the queue. 
     assert(this->size == size);
+    // indexOfHighPriority should be -1. 
+    assert(indexOfHighPriority == -1);
 }
 
+// Complexity
+// - Best case : O(1)
+//   . Element is added. 
+// - Worst case : O(n)
+//   . indexOfHighPriority is not searched. 
 template<typename T, int capacity>
 void PriorityQueue<T, capacity>::insert(T value) throw (runtime_error) {
     assert(size < capacity);
@@ -74,6 +91,12 @@ void PriorityQueue<T, capacity>::insert(T value) throw (runtime_error) {
     assert(size <= capacity);
 }
 
+// Complexity
+// - Best case : O(1)
+//   . Size == 1
+// - Worst case : O(n)
+//   . indexOfHighPriority is not searched. 
+//   . Element is removed. 
 template<typename T, int capacity>
 void PriorityQueue<T, capacity>::remove() throw (runtime_error) {
     assert(size > 0);
@@ -94,21 +117,33 @@ void PriorityQueue<T, capacity>::remove() throw (runtime_error) {
     }
 }
 
+// Complexity
+// - Best case : O(1)
+// - Worst case : O(1)
 template<typename T, int capacity>
 bool PriorityQueue<T, capacity>::isEmpty() const {
     return size == 0;
 }
 
+// Complexity
+// - Best case : O(1)
+// - Worst case : O(1)
 template<typename T, int capacity>
 bool PriorityQueue<T, capacity>::isFull() const {
     return size == capacity;
 }
 
+// Complexity
+// - Best case : O(1)
+// - Worst case : O(1)
 template<typename T, int capacity>
 int PriorityQueue<T, capacity>::getSize() const {
     return size;
 }
 
+// Complexity
+// - Best case : O(n)
+// - Worst case : O(n)
 template<typename T, int capacity>
 void PriorityQueue<T, capacity>::findTheHighPriority() {
     T value = queue[0];
@@ -121,6 +156,9 @@ void PriorityQueue<T, capacity>::findTheHighPriority() {
     }
 }
 
+// Complexity
+// - Best case : O(n)
+// - Worst case : O(n)
 template<typename T, int capacity>
 void PriorityQueue<T, capacity>::print() const {
     cout << "Queue elements : [ ";
