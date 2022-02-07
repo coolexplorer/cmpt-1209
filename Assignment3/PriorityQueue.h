@@ -7,6 +7,15 @@
 #include <stdexcept>
 using namespace std;
 
+
+// 1. What is the order of complexity of the methods implemented?
+// O(n): print(), insert(), remove() -> O(1): isEmpty(), isFull(), getSize()
+//
+// 2. What would be the list of attributes if we implement a dynamic structure?
+// - T* queue : Create the memory dynamically based on the elements.
+// - int capacity : Capacity will be chaged by adding the elements. 
+// - int size : Current size
+// - int indexOfHighPriority : This is for my code. (Optional) To store the high priority index, it can make add and delete easy.
 template<typename T, int capacity>
 class PriorityQueue {
 public:
@@ -146,13 +155,19 @@ int PriorityQueue<T, capacity>::getSize() const {
 // - Worst case : O(n)
 template<typename T, int capacity>
 void PriorityQueue<T, capacity>::findTheHighPriority() {
-    T value = queue[0];
-    this->indexOfHighPriority = 0;
+    assert(size > 0);
 
-    for (int i = 1 ; i < size ; i++) {
-        if (value < queue[i]) {
-            this->indexOfHighPriority = i;
+    if (size > 0) {
+        T value = queue[0];
+        indexOfHighPriority = 0;
+
+        for (int i = 1 ; i < size ; i++) {
+            if (value < queue[i]) {
+                indexOfHighPriority = i;
+            }
         }
+    } else {
+        indexOfHighPriority = -1;
     }
 }
 
