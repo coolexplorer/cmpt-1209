@@ -1,6 +1,6 @@
 #ifndef PRIORITY_QUEUE_H
 #define PRIORITY_QUEUE_H
-#define NDEBUG
+//#define NDEBUG
 
 #include <iostream>
 #include <assert.h>
@@ -124,6 +124,7 @@ void PriorityQueue<T, capacity>::remove() throw (runtime_error) {
     } else {
         throw runtime_error("Queue is empty.");
     }
+    assert(size >= 0);
 }
 
 // Complexity
@@ -155,7 +156,7 @@ int PriorityQueue<T, capacity>::getSize() const {
 // - Worst case : O(n)
 template<typename T, int capacity>
 void PriorityQueue<T, capacity>::findTheHighPriority() {
-    assert(size > 0);
+    assert(size >= 0);
 
     if (size > 0) {
         T value = queue[0];
