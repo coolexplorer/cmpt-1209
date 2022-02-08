@@ -162,7 +162,8 @@ int PriorityQueue<T, capacity>::getSize() const {
 }
 
 // Time Complexity
-// - Best case : O(n)
+// - Best case : O(1)
+//  . size = 0
 // - Worst case : O(n)
 // Memory Complexity
 // - Constant
