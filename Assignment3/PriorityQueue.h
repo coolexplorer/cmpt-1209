@@ -1,6 +1,6 @@
 #ifndef PRIORITY_QUEUE_H
 #define PRIORITY_QUEUE_H
-//#define NDEBUG
+#define NDEBUG
 
 #include <iostream>
 #include <assert.h>
@@ -10,6 +10,7 @@ using namespace std;
 
 // 1. What is the order of complexity of the methods implemented?
 // Time Complexity - O(n): print(), insert(), remove() -> O(1): isEmpty(), isFull(), getSize()
+// Memory Complexity - Constant (All same)
 // 
 // 2. What would be the list of attributes if we implement a dynamic structure?
 // - T* queue : Create the memory dynamically based on the elements.
@@ -120,13 +121,13 @@ void PriorityQueue<T, capacity>::remove() throw (runtime_error) {
         if (indexOfHighPriority == -1) {
             findTheHighPriority();
         }
-
-        size--;
-        if (size != 0) {
+        
+        if (size > 1) {
             for (int i = indexOfHighPriority + 1; i < size ; i++) {
                queue[i - 1] = queue[i];
             }
         }
+        size--;
     } else {
         throw runtime_error("Queue is empty.");
     }
