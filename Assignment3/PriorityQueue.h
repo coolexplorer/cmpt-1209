@@ -9,8 +9,8 @@ using namespace std;
 
 
 // 1. What is the order of complexity of the methods implemented?
-// O(n): print(), insert(), remove() -> O(1): isEmpty(), isFull(), getSize()
-//
+// Time Complexity - O(n): print(), insert(), remove() -> O(1): isEmpty(), isFull(), getSize()
+// 
 // 2. What would be the list of attributes if we implement a dynamic structure?
 // - T* queue : Create the memory dynamically based on the elements.
 // - int capacity : Capacity will be chaged by adding the elements. 
@@ -35,9 +35,11 @@ private:
     void findTheHighPriority();
 };
 
-// Complexity
+// Time Complexity
 // - Best case : O(1)
 // - Worst case : O(1)
+// Memory Complexity
+// - Constant
 template<typename T, int capacity>
 PriorityQueue<T, capacity>::PriorityQueue() {
     indexOfHighPriority = -1;
@@ -48,7 +50,7 @@ PriorityQueue<T, capacity>::PriorityQueue() {
     assert(indexOfHighPriority == -1);
 }
 
-// Complexity
+// Time Complexity
 // - Best case : O(n)
 // - Worst case : O(n)
 template<typename T, int capacity>
@@ -73,11 +75,13 @@ PriorityQueue<T, capacity>::PriorityQueue(T queue[], int size) throw (runtime_er
     assert(indexOfHighPriority == -1);
 }
 
-// Complexity
+// Time Complexity
 // - Best case : O(1)
 //   . Element is added. 
 // - Worst case : O(n)
 //   . indexOfHighPriority is not searched. 
+// Memory Complexity
+// - Constant
 template<typename T, int capacity>
 void PriorityQueue<T, capacity>::insert(T value) throw (runtime_error) {
     assert(size < capacity);
@@ -100,12 +104,14 @@ void PriorityQueue<T, capacity>::insert(T value) throw (runtime_error) {
     assert(size <= capacity);
 }
 
-// Complexity
+// Time Complexity
 // - Best case : O(1)
 //   . Size == 1
 // - Worst case : O(n)
 //   . indexOfHighPriority is not searched. 
 //   . Element is removed. 
+// Memory Complexity
+// - Constant
 template<typename T, int capacity>
 void PriorityQueue<T, capacity>::remove() throw (runtime_error) {
     assert(size > 0);
@@ -127,23 +133,27 @@ void PriorityQueue<T, capacity>::remove() throw (runtime_error) {
     assert(size >= 0);
 }
 
-// Complexity
+// Time Complexity
 // - Best case : O(1)
 // - Worst case : O(1)
+// Memory Complexity
+// - Constant
 template<typename T, int capacity>
 bool PriorityQueue<T, capacity>::isEmpty() const {
     return size == 0;
 }
 
-// Complexity
+// Time Complexity
 // - Best case : O(1)
 // - Worst case : O(1)
+// Memory Complexity
+// - Constant
 template<typename T, int capacity>
 bool PriorityQueue<T, capacity>::isFull() const {
     return size == capacity;
 }
 
-// Complexity
+// Time Complexity
 // - Best case : O(1)
 // - Worst case : O(1)
 template<typename T, int capacity>
@@ -151,9 +161,11 @@ int PriorityQueue<T, capacity>::getSize() const {
     return size;
 }
 
-// Complexity
+// Time Complexity
 // - Best case : O(n)
 // - Worst case : O(n)
+// Memory Complexity
+// - Constant
 template<typename T, int capacity>
 void PriorityQueue<T, capacity>::findTheHighPriority() {
     assert(size >= 0);
@@ -172,9 +184,11 @@ void PriorityQueue<T, capacity>::findTheHighPriority() {
     }
 }
 
-// Complexity
+// Time Complexity
 // - Best case : O(n)
 // - Worst case : O(n)
+// Memory Complexity
+// - Constant
 template<typename T, int capacity>
 void PriorityQueue<T, capacity>::print() const {
     cout << "Queue elements : [ ";
